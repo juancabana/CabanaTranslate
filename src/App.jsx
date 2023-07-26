@@ -6,7 +6,7 @@ import UpBar from './components/UpBar'
 const App = () => {
 
   const ContainerTranslator = styled(Box)(() => ({
-    backgroundColor: '#cfe8fc',
+    // backgroundColor: '#cfe8fc',
     height: '100vh',
     boxSizing: 'border-box',
     display: 'flex',
@@ -20,7 +20,7 @@ const App = () => {
       <CssBaseline />
       <Container maxWidth='lg'>
         <ContainerTranslator>
-          <Box sx={{ bgcolor: '#ffffff', minHeight: '600px', margin: '1rem' }}>
+          <Box sx={{ bgcolor: '#f1f1f1', minHeight: '600px', margin: '1rem', padding: '3rem', borderRadius: '10px' }}>
             <UpBar />
           </Box>
         </ContainerTranslator>

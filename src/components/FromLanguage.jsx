@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Fragment } from "react";
 import { useState } from "react";
-import { Select, MenuItem} from '@mui/material'
+import { Select, MenuItem, FormControl, InputLabel } from '@mui/material'
 
 
 const FromLanguage = ({languages}) => {
@@ -11,15 +11,19 @@ const FromLanguage = ({languages}) => {
     };
     return (
         <Fragment>
+            <FormControl sx={{  minWidth: 80, height: '100%', boxSizing: 'border-box' }}>
+                <InputLabel id="demo-simple-select-autowidth-label">From</InputLabel>
             <Select
                 value={fromLanguage.value}
                 autoWidth
-                label="From language"
+                label="From "
             >
                 {languages.map((language, index) => (
                     <MenuItem onClick={() => handleChange(index)} key={language.value} value={language.value}>{language.label}</MenuItem>
                 ))}
             </Select>
+            </FormControl>
+
         </Fragment>
     );
 }

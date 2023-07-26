@@ -19,11 +19,11 @@ const UpBar = () => {
 
     return (
         <Fragment>
-            <Container sx={{ display: 'flex', height: '50px', alignItems: 'center' }}>
+            <Container style={{ padding: '0px'}} sx={{ display: 'flex', height: '50px', alignItems: 'center' }}>
                 <BoxLanguage>
                     <FromLanguage languages={languages} />
                 </BoxLanguage>
-                <SwapHorizIcon fontSize="large" />
+                <SwapHorizIcon fontSize="large" sx={{marginX: '2rem'}} />
                 <BoxLanguage >
                     <ToLanguage languages={languages} />
                 </BoxLanguage>
