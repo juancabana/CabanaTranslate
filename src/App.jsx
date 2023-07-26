@@ -1,11 +1,18 @@
-// import './App.css'
+
 import { Container, Box, CssBaseline, styled } from '@mui/material'
 import UpBar from './components/UpBar'
 import DownContent from './components/DownContent'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import {completion} from './services/translate'
+import { useEffect } from 'react'
+
 
 const App = () => {
+  useEffect(() => {
+
+    completion()
+  }, [])
 
   const ContainerTranslator = styled(Box)(() => ({
     // backgroundColor: '#cfe8fc',

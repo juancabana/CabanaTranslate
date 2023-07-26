@@ -10,7 +10,6 @@ const FromLanguage = ({languages}) => {
     const handleChange = (index) => {
         dispatch({ type: 'SET_FROM_LANGUAGE', payload: languages[index].value })
     };
-    console.log(currentFromLanguage)
     return (
         
         <Fragment>
