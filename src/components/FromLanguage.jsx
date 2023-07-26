@@ -1,20 +1,23 @@
 /* eslint-disable react/prop-types */
 import { Fragment } from "react";
-import { useState } from "react";
 import { Select, MenuItem, FormControl, InputLabel } from '@mui/material'
-
+import { useDispatch, useSelector } from "react-redux";
 
 const FromLanguage = ({languages}) => {
-    const [fromLanguage, setFromLanguage] = useState(languages[0]);
+    const dispatch = useDispatch();
+    const currentFromLanguage = useSelector((store) => store.fromLanguage);
+    
     const handleChange = (index) => {
-        setFromLanguage(languages[index]);
+        dispatch({ type: 'SET_FROM_LANGUAGE', payload: languages[index].value })
     };
+    console.log(currentFromLanguage)
     return (
+        
         <Fragment>
             <FormControl sx={{  minWidth: 80, height: '100%', boxSizing: 'border-box' }}>
                 <InputLabel id="demo-simple-select-autowidth-label">From</InputLabel>
             <Select
-                value={fromLanguage.value}
+                value={currentFromLanguage}
                 autoWidth
                 label="From "
             >

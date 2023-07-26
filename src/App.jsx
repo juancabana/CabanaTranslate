@@ -1,8 +1,9 @@
 // import './App.css'
-import { Fragment } from 'react'
 import { Container, Box, CssBaseline, styled } from '@mui/material'
 import UpBar from './components/UpBar'
 import DownContent from './components/DownContent'
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 const App = () => {
 
@@ -17,7 +18,7 @@ const App = () => {
   }))
 
   return (
-    <Fragment>
+    <Provider store={store}>
       <CssBaseline />
       <Container maxWidth='lg'>
         <ContainerTranslator>
@@ -27,7 +28,7 @@ const App = () => {
           </Box>
         </ContainerTranslator>
       </Container>
-    </Fragment>
+    </Provider>
   )
 }
 

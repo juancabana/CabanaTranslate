@@ -1,11 +1,15 @@
 import { Fragment } from "react";
-import { Container, Box } from '@mui/material'
+import { Container, Box, Button } from '@mui/material'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import FromLanguage from "./FromLanguage";
 import ToLanguage from "./ToLanguage";
 import styled from "@emotion/styled";
+import { useDispatch } from "react-redux";
 
 const UpBar = () => {
+
+    const dispatch = useDispatch()
+
     const languages = [
         { value: 'es', label: 'Español' },
         { value: 'en', label: 'English' },
@@ -19,11 +23,13 @@ const UpBar = () => {
 
     return (
         <Fragment>
-            <Container style={{ padding: '0px'}} sx={{ display: 'flex', height: '50px', alignItems: 'center' }}>
+            <Container style={{ padding: '0px' }} sx={{ display: 'flex', height: '50px', alignItems: 'center' }}>
                 <BoxLanguage>
                     <FromLanguage languages={languages} />
                 </BoxLanguage>
-                <SwapHorizIcon fontSize="large" sx={{marginX: '2rem'}} />
+                <Button onClick={() => dispatch({ type: 'INTERCHANGE_LANGUAGES' })}>
+                    <SwapHorizIcon fontSize="large" sx={{ color: 'black' }} />
+                </Button>
                 <BoxLanguage >
                     <ToLanguage languages={languages} />
                 </BoxLanguage>
