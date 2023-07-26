@@ -2,6 +2,7 @@
 import { Fragment } from 'react'
 import { Container, Box, CssBaseline, styled } from '@mui/material'
 import UpBar from './components/UpBar'
+import DownContent from './components/DownContent'
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
         <ContainerTranslator>
           <Box sx={{ bgcolor: '#f1f1f1', minHeight: '600px', margin: '1rem', padding: '3rem', borderRadius: '10px' }}>
             <UpBar />
+            <DownContent />
           </Box>
         </ContainerTranslator>
       </Container>
