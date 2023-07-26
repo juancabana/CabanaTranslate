@@ -1,16 +1,29 @@
 // import './App.css'
 import { Fragment } from 'react'
-import { Container, Box, CssBaseline } from '@mui/material'
+import { Container, Box, CssBaseline, styled } from '@mui/material'
+import UpBar from './components/UpBar'
 
-function App() {
+const App = () => {
+
+  const ContainerTranslator = styled(Box)(() => ({
+    backgroundColor: '#cfe8fc',
+    height: '100vh',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+
+  }))
 
   return (
     <Fragment>
-      <CssBaseline/>
+      <CssBaseline />
       <Container maxWidth='lg'>
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
-          
-        </Box>
+        <ContainerTranslator>
+          <Box sx={{ bgcolor: '#ffffff', minHeight: '600px', margin: '1rem' }}>
+            <UpBar />
+          </Box>
+        </ContainerTranslator>
       </Container>
     </Fragment>
   )
