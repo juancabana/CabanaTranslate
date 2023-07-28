@@ -1,11 +1,20 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Container, Box } from '@mui/material'
 import styled from "@emotion/styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {getChatCompletion} from './../services/translate'
 
 
 const DownContent = () => {
   const dispatch = useDispatch()
+
+  const currentText = useSelector((store) => store.fromText);
+  const currentToLanguage = useSelector((store) => store.toLanguage);
+  const currentFromLanguage = useSelector((store) => store.fromLanguage);
+
+  useEffect(() => {
+    getChatCompletion(currentText, currentFromLanguage, currentToLanguage)
+  }, [])
 
   const InputText = styled('input')(() => ({
     width: '100%',

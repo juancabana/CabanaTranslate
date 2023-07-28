@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 export const initialState = {
   fromLanguage: "es",
   toLanguage: "en",
-  fromText: "",
+  fromText: "Hola, eres linda",
   result: "",
   loading: false,
 };
