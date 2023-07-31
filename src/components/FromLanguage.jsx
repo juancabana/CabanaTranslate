@@ -13,7 +13,7 @@ const FromLanguage = ({languages}) => {
     return (
         
         <Fragment>
-            <FormControl sx={{  minWidth: 80, height: '100%', boxSizing: 'border-box' }}>
+            <FormControl sx={{  minWidth: 80, width: '100%', height: '100%', boxSizing: 'border-box' }}>
                 <InputLabel id="demo-simple-select-autowidth-label">From</InputLabel>
             <Select
                 value={currentFromLanguage}

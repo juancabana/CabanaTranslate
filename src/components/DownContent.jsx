@@ -1,5 +1,5 @@
 import { Fragment, useEffect } from "react";
-import { Container, Box, TextField } from '@mui/material'
+import { Container, TextField } from '@mui/material'
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { getChatCompletion } from './../services/translate'
@@ -16,14 +16,13 @@ const ContainerContent = styled(Container)(() => ({
 const InputText = styled(TextField)(() => ({
   width: '100%',
   padding: '0px',
-  fontSize: '16px',
   borderRadius: '10px',
   border: 'none',
 }))
 const OutputText = styled(TextField)(() => ({
   width: '100%',
   padding: '0px',
-  fontSize: '16px',
+  fontSize: '18px',
   borderRadius: '10px',
   border: 'none',
 }))
