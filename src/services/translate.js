@@ -28,6 +28,6 @@ export async function getChatCompletion(currentText, currentFromLanguage, curren
   });
 
   const data = await response.json();
-  console.log(data);
-  return data;
+  // console.log(data);
+  return data.choices[0].message.content;
 }

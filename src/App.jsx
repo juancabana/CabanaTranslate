@@ -24,7 +24,7 @@ const App = () => {
       <CssBaseline />
       <Container maxWidth='lg'>
         <ContainerTranslator>
-          <Box sx={{ bgcolor: '#f1f1f1', minHeight: '600px', margin: '1rem', padding: '3rem', borderRadius: '10px' }}>
+          <Box sx={{ bgcolor: '#f1f1f1', minHeight: '500px', margin: '1rem', padding: '3rem', borderRadius: '10px' }}>
             <UpBar />
             <DownContent />
           </Box>

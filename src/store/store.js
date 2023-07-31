@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 export const initialState = {
   fromLanguage: "es",
   toLanguage: "en",
-  fromText: "Hola, eres linda",
+  fromText: "",
   result: "",
   loading: false,
 };
@@ -33,10 +33,24 @@ export const counterReducer = (state = initialState, action) => {
       };
 
     case "SET_FROM_TEXT":
+      if (action.payload === "") {
+        return { 
+          ...state, 
+          loading: false, 
+          fromText: action.payload ,
+          result: ""
+        };
+      }
       return {
         ...state,
         fromText: action.payload,
         loading: true,
+      };
+    case "SET_TEXT":
+      return {
+        ...state,
+        result: action.payload,
+        loading: false,
       };
 
     case "INTERCHANGE_LANGUAGES":
