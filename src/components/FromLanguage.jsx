@@ -19,7 +19,7 @@ const FromLanguage = ({ languages }) => {
                     value={currentFromLanguage}
                     autoWidth
                     label="From "
-                    style={{ color: '#FFFFFF', borderColor: '#FFFFFF' }}
+                    style={{  borderColor: '#FFFFFF' }}
                 >
                     {languages.map((language, index) => (
                         <MenuItem onClick={() => handleChange(index)} key={language.value} value={language.value}>{language.label}</MenuItem>
