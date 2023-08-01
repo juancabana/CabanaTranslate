@@ -11,6 +11,7 @@ const ContainerContent = styled(Container)(() => ({
   display: 'flex',
   gap: '1rem',
   marginTop: '2rem',
+   
 }))
 
 const InputText = styled(TextField)(() => ({
@@ -18,6 +19,7 @@ const InputText = styled(TextField)(() => ({
   padding: '0px',
   borderRadius: '10px',
   border: 'none',
+  
 }))
 const OutputText = styled(TextField)(() => ({
   width: '100%',
@@ -63,11 +65,19 @@ const DownContent = () => {
   return (
     <Fragment>
       <ContainerContent style={{ padding: '0px' }} >
-        
-          <InputText multiline rows={12}  value={currentText} onChange={(e) => handleFromText(e)} placeholder="Write here" />
+        <InputText
+        multiline 
+        rows={12} 
+        value={currentText} 
+        onChange={(e) => handleFromText(e)} 
+        placeholder="Write here" />
 
-          
-          <OutputText multiline rows={12}  value={isLoading ? 'Loading...' : currentResult} disabled={true} placeholder="Translate"/>
+        <OutputText 
+        multiline 
+        rows={12} 
+        value={isLoading ? 'Loading...' : currentResult} 
+        disabled={true} 
+        placeholder="Translate" />
       </ContainerContent>
     </Fragment>
   );

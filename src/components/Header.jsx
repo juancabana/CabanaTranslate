@@ -8,10 +8,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 const Header = () => {
 
     return (
-        <AppBar position="static" style={{backgroundColor: 'transparent', borderBottom: '1px solid #e5e2cf', boxSizing: 'border-box'}}>
+        <AppBar position="static" style={{backgroundColor: 'transparent', borderBottom: '1px solid #CFE0E5', boxSizing: 'border-box'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <GTranslateIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: '#e5e2cf' }} />
+                    <GTranslateIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: '#CFE0E5' }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -23,14 +23,14 @@ const Header = () => {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: '#e5e2cf',
+                            color: '#CFE0E5',
                             textDecoration: 'none',
                         }}
                     >
                         LOGO
                     </Typography>
 
-                    <GTranslateIcon fontSize='large' sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <GTranslateIcon fontSize='large' sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: '#CFE0E5' }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -43,7 +43,7 @@ const Header = () => {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: '#CFE0E5',
                             textDecoration: 'none',
                         }}
                     >
@@ -54,7 +54,7 @@ const Header = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip >
                             <IconButton sx={{ p: 0 }}>
-                                <GitHubIcon fontSize='large' style={{color: '#e5e2cf'}}/>
+                                <GitHubIcon fontSize='large' style={{color: '#CFE0E5    '}}/>
                             </IconButton>
                         </Tooltip>
 

@@ -7,11 +7,13 @@ const TranstalorContent = () => {
   const theme = useTheme(); // Utiliza el hook useTheme para acceder al theme
 
   const TranstalorWrapper = styled(Box)(() => ({
-    backgroundColor: '#ffffff',
+    backgroundColor: '#4c4c4c',
     height: 'auto',
     padding: '1rem',
     borderRadius: '10px',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    // border: '1px solid #CFE0E5',
+
   }))
   const BoxContainer = styled('div')(() => ({
     height: 'calc(100vh - 65px)',

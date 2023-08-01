@@ -13,19 +13,25 @@ const FromLanguage = ({ languages }) => {
     return (
 
         <Fragment>
-            <FormControl sx={{ minWidth: 80, width: '100%', height: '100%', boxSizing: 'border-box', }}>
-                <InputLabel className="border" id="demo-simple-select-autowidth-label">From</InputLabel>
                 <Select
                     value={currentFromLanguage}
                     autoWidth
-                    label="From "
-                    style={{  borderColor: '#FFFFFF' }}
+                    // label="From "
+                    sx={{
+                        width: "100%",
+                        height: 40,
+                        marginRight: 15,
+                        border: "1px solid #ffffff",
+                        color: "#fff",
+                        "& .MuiSvgIcon-root": {
+                            color: "white",
+                        },
+                        }}
                 >
                     {languages.map((language, index) => (
                         <MenuItem onClick={() => handleChange(index)} key={language.value} value={language.value}>{language.label}</MenuItem>
                     ))}
                 </Select>
-            </FormControl>
 
         </Fragment>
     );
