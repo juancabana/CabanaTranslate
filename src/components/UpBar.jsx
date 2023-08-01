@@ -18,17 +18,17 @@ const UpBar = () => {
 
 
     const BoxLanguage = styled(Box)(() => ({
-        width: '100%', height: '100%'
+        width: '100%', height: '100%', display: 'flex', alignItems: 'center'
     }))
 
     return (
         <Fragment>
-            <Container style={{ padding: '0px' }} sx={{ display: 'flex', height: '50px', alignItems: 'center' }}>
+            <Container sx={{ display: 'flex', height: '50px', alignItems: 'center'}} style={{padding: '0px'}}>
                 <BoxLanguage>
                     <FromLanguage languages={languages} />
                 </BoxLanguage>
-                <Button onClick={() => dispatch({ type: 'INTERCHANGE_LANGUAGES' })}>
-                    <SwapHorizIcon fontSize="large" sx={{ color: 'black' }} />
+                <Button  onClick={() => dispatch({ type: 'INTERCHANGE_LANGUAGES' })}>
+                    <SwapHorizIcon fontSize="large" sx={{ color: 'white' }} />
                 </Button>
                 <BoxLanguage >
                     <ToLanguage languages={languages} />

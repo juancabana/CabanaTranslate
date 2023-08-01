@@ -7,8 +7,10 @@ import './App.css';
 const App = () => {
   return (
     <Provider store={store}>
-      <Header/>
-      <TranstalorContent/>      
+      <div style={{ height: '100vh' }}>
+        <Header />
+        <TranstalorContent />
+      </div>
     </Provider>
   )
 }
