@@ -7,6 +7,7 @@ export const initialState = {
   fromText: "",
   result: "",
   loading: false,
+  counter: 22,
 };
 
 export const counterReducer = (state = initialState, action) => {
@@ -34,11 +35,11 @@ export const counterReducer = (state = initialState, action) => {
 
     case "SET_FROM_TEXT":
       if (action.payload === "") {
-        return { 
-          ...state, 
-          loading: false, 
-          fromText: action.payload ,
-          result: ""
+        return {
+          ...state,
+          loading: false,
+          fromText: action.payload,
+          result: "",
         };
       }
       return {
@@ -47,6 +48,12 @@ export const counterReducer = (state = initialState, action) => {
         loading: true,
       };
     case "SET_TEXT":
+      if (action.payload === null) {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
       return {
         ...state,
         result: action.payload,
@@ -58,6 +65,23 @@ export const counterReducer = (state = initialState, action) => {
         ...state,
         fromLanguage: state.toLanguage,
         toLanguage: state.fromLanguage,
+        fromText: state.result,
+        result: state.fromText,
+      };
+    case "COUNT_DOWN":
+      if(state.counter === 0) {
+        return state
+      }
+      return {
+        ...state,
+        counter: state.counter - 1,
+        loading: false,
+
+      };
+    case "RESET_COUNT":
+      return {
+        ...state,
+        counter: 22,
       };
 
     default:

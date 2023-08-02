@@ -10,6 +10,7 @@ const App = () => {
       <div style={{ height: '100vh' }}>
         <Header />
         <TranstalorContent />
+        
       </div>
     </Provider>
   )

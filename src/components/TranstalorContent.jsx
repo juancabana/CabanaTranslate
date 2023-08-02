@@ -7,7 +7,7 @@ const TranstalorContent = () => {
 
   const TranstalorWrapper = styled(Box)(() => ({
     backgroundColor: '#3B3B3B',
-    height: 'auto',
+    minHeight: '500px',
     padding: '1rem',
     boxSizing: 'border-box',
     width: '100%',
