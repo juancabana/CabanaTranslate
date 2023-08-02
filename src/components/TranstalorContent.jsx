@@ -1,6 +1,7 @@
 import { Box, CssBaseline  } from '@mui/material'
 import UpBar from './UpBar'
 import DownContent from './DownContent'
+import Description from './Description'
 import styled from '@emotion/styled'
 
 const TranstalorContent = () => {
@@ -34,6 +35,7 @@ const TranstalorContent = () => {
         <TranstalorWrapper>
           <UpBar />
           <DownContent />
+          <Description/>
         </TranstalorWrapper>
       </BoxContainer>
     </>

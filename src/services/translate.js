@@ -32,7 +32,6 @@ export async function getChatCompletion(
   });
 
   const data = await response.json();
-  console.log(data)
 
   if (!response.ok) {
     if (response.status === 429) {

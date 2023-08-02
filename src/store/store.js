@@ -8,6 +8,7 @@ export const initialState = {
   result: "",
   loading: false,
   counter: 22,
+  interchange: true,
 };
 
 export const counterReducer = (state = initialState, action) => {
@@ -67,10 +68,11 @@ export const counterReducer = (state = initialState, action) => {
         toLanguage: state.fromLanguage,
         fromText: state.result,
         result: state.fromText,
+        interchange: !state.interchange,
       };
     case "COUNT_DOWN":
       if(state.counter === 0) {
-        return state
+        return state  
       }
       return {
         ...state,
