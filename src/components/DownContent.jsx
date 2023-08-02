@@ -97,7 +97,7 @@ const DownContent = () => {
   const isManual = useSelector((store) => store.isManual);
 
   let interval;
-
+  const divRef = useRef('');
   const debouncedFromText = useDebounce(currentText);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
@@ -129,7 +129,9 @@ const DownContent = () => {
   // Every time the text or languages​​are changed this is executed
   useEffect(() => {
     debouncedFromText !== '' ? translate() : false;
-  }, [debouncedFromText, currentToLanguage, currentFromLanguage])
+  }, [
+    // debouncedFromText, 
+    currentToLanguage, currentFromLanguage])
 
   // Set the text to translate
   const handleFromText = (e) => {
@@ -151,7 +153,6 @@ const DownContent = () => {
     currentText !== '' ? false : setShowPlaceholder(true);
   };
 
-  const divRef = useRef(null);
 
   return (
     <Fragment>
@@ -159,13 +160,13 @@ const DownContent = () => {
       <ContainerContent style={{ padding: '0px' }} >
         <DivText
           contentEditable
-          uppressContentEditableWarning={true}
+          ref={divRef}
           onInput={handleFromText}
           onFocus={removePlaceholder}
           onBlur={addPlaceholder}
-          ref={divRef}
+          textContent='h'
           >
-          {showPlaceholder && 'Write here...'}
+          {showPlaceholder && 'Write here...' }
         </DivText>
 
         <OutputText

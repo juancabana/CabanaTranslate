@@ -25,7 +25,7 @@ const UpBar = () => {
         <Fragment>
             <Container sx={{ display: 'flex', height: '50px', alignItems: 'center'}} style={{padding: '0px'}}>
                 <BoxLanguage>
-                    <FromLanguage languages={languages} />
+                    <FromLanguage languages={[{value: 'auto', label: 'Auto'}, ...languages]} />
                 </BoxLanguage>
                 <Button  onClick={() => dispatch({ type: 'INTERCHANGE_LANGUAGES' })}>
                     <SwapHorizIcon fontSize="large" sx={{ color: 'white' }} />

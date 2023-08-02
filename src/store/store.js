@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 // reducer.js
 export const initialState = {
-  fromLanguage: "es",
+  fromLanguage: "auto",
   toLanguage: "en",
   fromText: "",
   result: "",
@@ -52,7 +52,7 @@ export const counterReducer = (state = initialState, action) => {
       return {
         ...state,
         fromText: action.payload,
-        loading: true,
+        // loading: true,
       };
     case "SET_TEXT":
       if (action.payload === null) {
@@ -72,8 +72,8 @@ export const counterReducer = (state = initialState, action) => {
         ...state,
         fromLanguage: state.toLanguage,
         toLanguage: state.fromLanguage,
-        fromText: state.result,
         result: state.fromText,
+        fromText: state.result,
         interchange: !state.interchange,
       };
     case "COUNT_DOWN":
