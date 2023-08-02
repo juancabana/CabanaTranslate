@@ -16,8 +16,9 @@ const ContainerContent = styled(Container)(() => ({
 
 }))
 
-const InputText = styled('textarea')(() => ({
+const InputText = styled('div')(() => ({
   width: '100%',
+  minHeight: '500px',
   padding: '10px',
   border: 'none',
   backgroundColor: '#4c4c4c',
@@ -61,6 +62,7 @@ const DownContent = () => {
 
   const dispatch = useDispatch()
   const debouncedFromText = useDebounce(currentText);
+  const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   let interval;
 
@@ -97,20 +99,30 @@ const DownContent = () => {
 
 
   const handleFromText = (e) => {
-    const payload = e.target.value;
+    const payload = e.target.innerText;
+    // console.log(e)
     dispatch({ type: 'SET_FROM_TEXT', payload })
   }
   console.log(counter)
-
+  const removePlaceholder = () => {
+    setShowPlaceholder(false);
+  };
+  const addPlaceholder = () => {
+    setShowPlaceholder(true);
+  };
   return (
     <Fragment>
       <ContainerContent style={{ padding: '0px' }} >
         <InputText
-          multiline
-          // rows={12}
-          value={currentText}
-          onChange={(e) => handleFromText(e)}
-          placeholder="Write here" />
+          contentEditable={true}
+          // value={currentText}
+          onInput={handleFromText}
+          onFocus={removePlaceholder}
+          onBlur={addPlaceholder}
+          // placeholder="Write here" 
+          >
+            {showPlaceholder && <span className="placeholder-text" id="placeholder">Escribe texto aquí...</span>}
+          </InputText>
 
         <OutputText
           multiline
