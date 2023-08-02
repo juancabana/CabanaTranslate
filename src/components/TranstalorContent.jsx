@@ -12,7 +12,10 @@ const TranstalorContent = () => {
     padding: '1rem',
     boxSizing: 'border-box',
     width: '100%',
-    maxWidth: '1200px'
+    maxWidth: '1200px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
 
 
   }))

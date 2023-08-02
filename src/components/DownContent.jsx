@@ -1,6 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 import { Fragment, useEffect, useState, useRef } from "react";
-import { Container } from '@mui/material'
+import { Container, Button } from '@mui/material'
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { getChatCompletion } from './../services/translate'
@@ -94,6 +94,7 @@ const DownContent = () => {
   const isLoading = useSelector((store) => store.loading);
   const counter = useSelector((store) => store.counter);
   const isInterchange = useSelector((store) => store.interchange);
+  const isManual = useSelector((store) => store.isManual);
 
   let interval;
 
@@ -154,6 +155,7 @@ const DownContent = () => {
 
   return (
     <Fragment>
+      <>
       <ContainerContent style={{ padding: '0px' }} >
         <DivText
           contentEditable
@@ -162,7 +164,7 @@ const DownContent = () => {
           onFocus={removePlaceholder}
           onBlur={addPlaceholder}
           ref={divRef}
-        >
+          >
           {showPlaceholder && 'Write here...'}
         </DivText>
 
@@ -173,6 +175,9 @@ const DownContent = () => {
           disabled={true}
           placeholder="Translation" />
       </ContainerContent>
+          </>
+          {isManual && <Button  variant="contained" style={{ maxWidth: '150px', marginBottom: '.5rem'}}>Translate</Button>}
+          <hr style={{width: '100%'}} />
     </Fragment>
   );
 }

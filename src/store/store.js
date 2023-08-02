@@ -9,10 +9,16 @@ export const initialState = {
   loading: false,
   counter: 22,
   interchange: true,
+  isManual: true,
 };
 
 export const counterReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_IS_MANUAL":
+      return {
+        ...state,
+        isManual: !state.isManual,
+      };
     case "SET_FROM_LANGUAGE":
       if (state.toLanguage === action.payload) {
         return state;
