@@ -1,4 +1,4 @@
-import { Box, CssBaseline  } from '@mui/material'
+import { Box, CssBaseline } from '@mui/material'
 import UpBar from './UpBar'
 import DownContent from './DownContent'
 import Description from './Description'
@@ -25,11 +25,7 @@ const TranstalorContent = () => {
     marginTop: '3rem',
     justifyContent: 'center',
     alignItems: 'center'
-    // [theme.breakpoints.down('sm')]: {
-    //   // height: 'calc(100vh - 57px)',
-    // },
   }))
-
 
   return (
     <>
@@ -38,7 +34,7 @@ const TranstalorContent = () => {
         <TranstalorWrapper>
           <UpBar />
           <DownContent />
-          <Description/>
+          <Description />
         </TranstalorWrapper>
       </BoxContainer>
     </>

@@ -3,8 +3,6 @@ import { Fragment } from "react";
 import { Select, MenuItem } from '@mui/material'
 import { useDispatch, useSelector } from "react-redux";
 
-
-
 const ToLanguage = ({ languages }) => {
     const dispatch = useDispatch();
     const currentToLanguage = useSelector((store) => store.toLanguage);
@@ -15,7 +13,6 @@ const ToLanguage = ({ languages }) => {
 
     return (
         <Fragment>
-
             <Select
                 value={currentToLanguage}
                 autoWidth
@@ -35,7 +32,6 @@ const ToLanguage = ({ languages }) => {
                     <MenuItem onClick={() => handleChange(index)} key={language.value} value={language.value}>{language.label}</MenuItem>
                 ))}
             </Select>
-
         </Fragment>
     );
 }

@@ -1,16 +1,11 @@
 /* eslint-disable no-irregular-whitespace */
-import { Fragment, useEffect, useState, useRef } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Container, Button } from '@mui/material'
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { getChatCompletion } from './../services/translate'
-import { useDebounce } from "../hooks/useDebounce";
 
-
-
-
-
-const ContainerContent = styled(Container)(({theme}) => ({
+const ContainerContent = styled(Container)(({ theme }) => ({
   display: 'flex',
   gap: '1rem',
   marginTop: '1rem',
@@ -19,11 +14,9 @@ const ContainerContent = styled(Container)(({theme}) => ({
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column'
   },
-
 }))
 
-
-const DivText = styled('div')(({theme}) => ({
+const DivText = styled('textarea')(({ theme }) => ({
   width: 'calc(50% - .5rem)',
   minHeight: '400px',
   padding: '10px',
@@ -38,11 +31,9 @@ const DivText = styled('div')(({theme}) => ({
     width: '100%',
     flexDirection: 'column'
   },
-
-
-
 }))
-const OutputText = styled('textarea')(({theme}) => ({
+
+const OutputText = styled('textarea')(({ theme }) => ({
   width: 'calc(50% - .5rem)',
   padding: '10px',
   fontSize: '20px',
@@ -53,6 +44,7 @@ const OutputText = styled('textarea')(({theme}) => ({
   fontStyle: 'italic',
   '&::placeholder': {
     fontStyle: 'italic',
+    color: 'white',
   },
   [theme.breakpoints.down('sm')]: {
     minHeight: '200px',
@@ -61,89 +53,31 @@ const OutputText = styled('textarea')(({theme}) => ({
     width: '100%',
     flexDirection: 'column'
   },
-
-
 }))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const DownContent = () => {
-  
-
-
-
 
   const dispatch = useDispatch()
 
-  const currentText = useSelector((store) => store.fromText);
-  const currentToLanguage = useSelector((store) => store.toLanguage);
-  const currentFromLanguage = useSelector((store) => store.fromLanguage);
-  const currentResult = useSelector((store) => store.result);
-  const isLoading = useSelector((store) => store.loading);
-  const counter = useSelector((store) => store.counter);
-  const isInterchange = useSelector((store) => store.interchange);
-  const isManual = useSelector((store) => store.isManual);
-
-  let interval;
-  const debouncedFromText = useDebounce(currentText);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
+  const { fromText, toLanguage, fromLanguage, result, loading, isManual } = useSelector((store) => store);
+
   const translate = async () => {
-    const result = await getChatCompletion(currentText, currentFromLanguage, currentToLanguage);
-    if (!result.exceededLimit) {
-      handleSetText(result.content)
-    } else
-      if (result.exceededLimit) {
-        interval = setInterval(() => {
-        }, 1000);
-      }
+    dispatch({ type: 'LOADING' })
+    const result = await getChatCompletion(fromText, fromLanguage, toLanguage);
+    !result.exceededLimit ? handleSetText(result.content) : false;
+
   }
-
-
-  useEffect(() => {
-    if (counter === 0) {
-      clearInterval(interval);
-      translate()
-    }
-  }, [counter])
 
   // Every time the text or languages​​are changed this is executed
   useEffect(() => {
-    debouncedFromText !== '' ? translate() : false;
-  }, [
-    // debouncedFromText, 
-    currentToLanguage, currentFromLanguage])
+    fromText !== '' && translate()
+  }, [toLanguage])
 
   // Set the text to translate
   const handleFromText = (e) => {
-    const payload = e.target.innerText;
+    const payload = e.target.value;
     dispatch({ type: 'SET_FROM_TEXT', payload })
   }
 
@@ -158,27 +92,26 @@ const DownContent = () => {
 
   // Add the placeholder
   const addPlaceholder = () => {
-    currentText !== '' ? false : setShowPlaceholder(true);
+    fromText !== '' ? false : setShowPlaceholder(true);
   };
 
-  console.log(showPlaceholder)
+  console.log(fromText)
   return (
     <Fragment>
       <>
         <ContainerContent style={{ padding: '0px' }} >
           <DivText
-            contentEditable
-            onInput={handleFromText}
+            // contentEditable
+            onChange={handleFromText}
             onFocus={removePlaceholder}
             onBlur={addPlaceholder}
+            value={showPlaceholder ? 'Write here...' : fromText}
           >
-            {showPlaceholder && <div>Write here...</div>}
           </DivText>
-
           <OutputText
             multiline
             // rows={12}
-            value={isLoading ? 'Loading...' : currentResult}
+            value={loading ? 'Loading...' : result}
             disabled={true}
             placeholder="Translation" />
         </ContainerContent>

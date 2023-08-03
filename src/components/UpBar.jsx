@@ -8,8 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const UpBar = () => {
     const dispatch = useDispatch()
-  const currentFromLanguage = useSelector((store) => store.fromLanguage);
-
+    const currentFromLanguage = useSelector((store) => store.fromLanguage);
 
     const languages = [
         { value: 'es', label: 'Español' },
@@ -17,22 +16,21 @@ const UpBar = () => {
         { value: 'fr', label: 'Frances' },
     ]
 
-
     const BoxLanguage = styled(Box)(() => ({
         width: '100%', height: '100%', display: 'flex', alignItems: 'center'
     }))
-    const interchangeLanguages = () => {
 
+    const interchangeLanguages = () => {
         currentFromLanguage !== 'auto' ? dispatch({ type: 'INTERCHANGE_LANGUAGES' }) : false;
     }
 
     return (
         <Fragment>
-            <Container sx={{ display: 'flex', height: '50px', alignItems: 'center'}} style={{padding: '0px'}}>
+            <Container sx={{ display: 'flex', height: '50px', alignItems: 'center' }} style={{ padding: '0px' }}>
                 <BoxLanguage>
-                    <FromLanguage languages={[{value: 'auto', label: 'Auto'}, ...languages]} />
+                    <FromLanguage languages={[{ value: 'auto', label: 'Auto' }, ...languages]} />
                 </BoxLanguage>
-                <Button  onClick={() => interchangeLanguages()}>
+                <Button onClick={() => interchangeLanguages()}>
                     <SwapHorizIcon fontSize="large" sx={{ color: 'white' }} />
                 </Button>
                 <BoxLanguage >

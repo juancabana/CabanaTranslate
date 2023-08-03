@@ -52,8 +52,12 @@ export const counterReducer = (state = initialState, action) => {
       return {
         ...state,
         fromText: action.payload,
-        // loading: true,
       };
+    case "LOADING":
+        return {
+          ...state,
+          loading: true,
+        };
     case "SET_TEXT":
       if (action.payload === null) {
         return {
@@ -77,14 +81,13 @@ export const counterReducer = (state = initialState, action) => {
         interchange: !state.interchange,
       };
     case "COUNT_DOWN":
-      if(state.counter === 0) {
-        return state  
+      if (state.counter === 0) {
+        return state;
       }
       return {
         ...state,
         counter: state.counter - 1,
         loading: false,
-
       };
     case "RESET_COUNT":
       return {
