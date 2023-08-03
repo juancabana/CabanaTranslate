@@ -8,18 +8,22 @@ import { useDebounce } from "../hooks/useDebounce";
 
 
 
-const ContainerContent = styled(Container)(() => ({
+
+
+const ContainerContent = styled(Container)(({theme}) => ({
   display: 'flex',
   gap: '1rem',
   marginTop: '1rem',
   marginBottom: '1rem',
-  height: '100%'
-
+  height: '100%',
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column'
+  },
 
 }))
 
 
-const DivText = styled('div')(() => ({
+const DivText = styled('div')(({theme}) => ({
   width: 'calc(50% - .5rem)',
   minHeight: '400px',
   padding: '10px',
@@ -28,11 +32,17 @@ const DivText = styled('div')(() => ({
   fontSize: '20px',
   resize: 'none',
   color: 'white',
+  [theme.breakpoints.down('sm')]: {
+    minHeight: '200px',
+    Height: '100%',
+    width: '100%',
+    flexDirection: 'column'
+  },
 
 
 
 }))
-const OutputText = styled('textarea')(() => ({
+const OutputText = styled('textarea')(({theme}) => ({
   width: 'calc(50% - .5rem)',
   padding: '10px',
   fontSize: '20px',
@@ -40,11 +50,16 @@ const OutputText = styled('textarea')(() => ({
   backgroundColor: '#3B3B3B',
   color: 'white',
   resize: 'none',
-
   fontStyle: 'italic',
   '&::placeholder': {
-    color: 'white',
     fontStyle: 'italic',
+  },
+  [theme.breakpoints.down('sm')]: {
+    minHeight: '200px',
+
+    Height: '100%',
+    width: '100%',
+    flexDirection: 'column'
   },
 
 
@@ -79,12 +94,12 @@ const OutputText = styled('textarea')(() => ({
 
 
 
-
-
-
-
-
 const DownContent = () => {
+  
+
+
+
+
   const dispatch = useDispatch()
 
   const currentText = useSelector((store) => store.fromText);
@@ -102,13 +117,11 @@ const DownContent = () => {
 
   const translate = async () => {
     const result = await getChatCompletion(currentText, currentFromLanguage, currentToLanguage);
-    // dispatch({ type: 'RESET_COUNT' })
     if (!result.exceededLimit) {
       handleSetText(result.content)
     } else
       if (result.exceededLimit) {
         interval = setInterval(() => {
-          // dispatch({ type: 'COUNT_DOWN' })
         }, 1000);
       }
   }
@@ -148,7 +161,7 @@ const DownContent = () => {
     currentText !== '' ? false : setShowPlaceholder(true);
   };
 
-console.log(showPlaceholder)
+  console.log(showPlaceholder)
   return (
     <Fragment>
       <>
@@ -159,7 +172,7 @@ console.log(showPlaceholder)
             onFocus={removePlaceholder}
             onBlur={addPlaceholder}
           >
-            {showPlaceholder && <div>Write here...</div> }
+            {showPlaceholder && <div>Write here...</div>}
           </DivText>
 
           <OutputText
