@@ -66,14 +66,14 @@ const DownContent = () => {
   const translate = async () => {
     dispatch({ type: 'LOADING' })
     const result = await getChatCompletion(fromText, fromLanguage, toLanguage);
-    !result.exceededLimit ? handleSetText(result.content) : false;
+    !result.exceededLimit ? handleSetText(result.content) : handleSetText(result.content);
 
   }
 
   // Every time the text or languages​​are changed this is executed
   useEffect(() => {
     fromText !== '' && translate()
-  }, [toLanguage])
+  }, [toLanguage, fromLanguage])
 
   // Set the text to translate
   const handleFromText = (e) => {
@@ -95,13 +95,11 @@ const DownContent = () => {
     fromText !== '' ? false : setShowPlaceholder(true);
   };
 
-  console.log(fromText)
   return (
     <Fragment>
       <>
         <ContainerContent style={{ padding: '0px' }} >
           <DivText
-            // contentEditable
             onChange={handleFromText}
             onFocus={removePlaceholder}
             onBlur={addPlaceholder}
@@ -110,7 +108,6 @@ const DownContent = () => {
           </DivText>
           <OutputText
             multiline
-            // rows={12}
             value={loading ? 'Loading...' : result}
             disabled={true}
             placeholder="Translation" />

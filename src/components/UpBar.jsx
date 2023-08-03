@@ -5,6 +5,7 @@ import FromLanguage from "./FromLanguage";
 import ToLanguage from "./ToLanguage";
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const UpBar = () => {
     const dispatch = useDispatch()
@@ -21,7 +22,16 @@ const UpBar = () => {
     }))
 
     const interchangeLanguages = () => {
-        currentFromLanguage !== 'auto' ? dispatch({ type: 'INTERCHANGE_LANGUAGES' }) : false;
+        currentFromLanguage !== 'auto' ? dispatch({ type: 'INTERCHANGE_LANGUAGES' }) : Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'You must select the language from which you are going to translate',
+            background: '#3B3B3B',
+            color: '#CFE0E5',
+            confirmButtonColor: '#1976d2'
+            
+
+        });
     }
 
     return (

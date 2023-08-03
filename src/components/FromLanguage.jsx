@@ -16,7 +16,6 @@ const FromLanguage = ({ languages }) => {
             <Select
                 value={currentFromLanguage}
                 autoWidth
-                // label="From "
                 sx={{
                     width: "100%",
                     height: 40,

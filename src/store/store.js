@@ -27,7 +27,7 @@ export const counterReducer = (state = initialState, action) => {
         ...state,
         fromLanguage: action.payload,
         result: "",
-        loading: true,
+        // loading: true,
       };
     case "SET_TO_LANGUAGE":
       if (state.fromLanguage === action.payload) {
@@ -54,10 +54,10 @@ export const counterReducer = (state = initialState, action) => {
         fromText: action.payload,
       };
     case "LOADING":
-        return {
-          ...state,
-          loading: true,
-        };
+      return {
+        ...state,
+        loading: true,
+      };
     case "SET_TEXT":
       if (action.payload === null) {
         return {
