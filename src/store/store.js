@@ -33,6 +33,9 @@ export const counterReducer = (state = initialState, action) => {
       if (state.fromLanguage === action.payload) {
         return state;
       }
+      if (state.fromText === "") {
+        return { ...state, toLanguage: action.payload, loading: false };
+      }
       return {
         ...state,
         toLanguage: action.payload,

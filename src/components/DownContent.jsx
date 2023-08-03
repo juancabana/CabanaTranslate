@@ -4,6 +4,8 @@ import { Container, Button } from '@mui/material'
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { getChatCompletion } from './../services/translate'
+import Swal from "sweetalert2";
+
 
 const ContainerContent = styled(Container)(({ theme }) => ({
   display: 'flex',
@@ -55,6 +57,18 @@ const OutputText = styled('textarea')(({ theme }) => ({
   },
 }))
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
 const DownContent = () => {
 
   const dispatch = useDispatch()
@@ -64,9 +78,16 @@ const DownContent = () => {
   const { fromText, toLanguage, fromLanguage, result, loading, isManual } = useSelector((store) => store);
 
   const translate = async () => {
-    dispatch({ type: 'LOADING' })
-    const result = await getChatCompletion(fromText, fromLanguage, toLanguage);
-    !result.exceededLimit ? handleSetText(result.content) : handleSetText(result.content);
+    if (fromText !== '') {
+      dispatch({ type: 'LOADING' })
+      const result = await getChatCompletion(fromText, fromLanguage, toLanguage);
+      !result.exceededLimit ? handleSetText(result.content) : handleSetText(result.content);
+    } else {
+      Toast.fire({
+        icon: 'warning',
+        title: 'You must write something to translate'
+      })
+    }
 
   }
 
