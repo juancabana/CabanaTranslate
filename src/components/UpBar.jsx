@@ -4,11 +4,12 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import FromLanguage from "./FromLanguage";
 import ToLanguage from "./ToLanguage";
 import styled from "@emotion/styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const UpBar = () => {
-
     const dispatch = useDispatch()
+  const currentFromLanguage = useSelector((store) => store.fromLanguage);
+
 
     const languages = [
         { value: 'es', label: 'Español' },
@@ -20,6 +21,10 @@ const UpBar = () => {
     const BoxLanguage = styled(Box)(() => ({
         width: '100%', height: '100%', display: 'flex', alignItems: 'center'
     }))
+    const interchangeLanguages = () => {
+
+        currentFromLanguage !== 'auto' ? dispatch({ type: 'INTERCHANGE_LANGUAGES' }) : false;
+    }
 
     return (
         <Fragment>
@@ -27,7 +32,7 @@ const UpBar = () => {
                 <BoxLanguage>
                     <FromLanguage languages={[{value: 'auto', label: 'Auto'}, ...languages]} />
                 </BoxLanguage>
-                <Button  onClick={() => dispatch({ type: 'INTERCHANGE_LANGUAGES' })}>
+                <Button  onClick={() => interchangeLanguages()}>
                     <SwapHorizIcon fontSize="large" sx={{ color: 'white' }} />
                 </Button>
                 <BoxLanguage >

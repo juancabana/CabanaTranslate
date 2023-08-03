@@ -97,7 +97,6 @@ const DownContent = () => {
   const isManual = useSelector((store) => store.isManual);
 
   let interval;
-  const divRef = useRef('');
   const debouncedFromText = useDebounce(currentText);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
@@ -114,10 +113,6 @@ const DownContent = () => {
       }
   }
 
-  useEffect(() => {
-    divRef.current.textContent = currentResult
-    // divRef.current.textContent === currentText ? divRef.current.textContent = 'Cambio' : divRef.current.textContent = 'Sin cambio';
-  }, [isInterchange])
 
   useEffect(() => {
     if (counter === 0) {
@@ -153,32 +148,30 @@ const DownContent = () => {
     currentText !== '' ? false : setShowPlaceholder(true);
   };
 
-
+console.log(showPlaceholder)
   return (
     <Fragment>
       <>
-      <ContainerContent style={{ padding: '0px' }} >
-        <DivText
-          contentEditable
-          ref={divRef}
-          onInput={handleFromText}
-          onFocus={removePlaceholder}
-          onBlur={addPlaceholder}
-          textContent='h'
+        <ContainerContent style={{ padding: '0px' }} >
+          <DivText
+            contentEditable
+            onInput={handleFromText}
+            onFocus={removePlaceholder}
+            onBlur={addPlaceholder}
           >
-          {showPlaceholder && 'Write here...' }
-        </DivText>
+            {showPlaceholder && <div>Write here...</div> }
+          </DivText>
 
-        <OutputText
-          multiline
-          // rows={12}
-          value={isLoading ? 'Loading...' : currentResult}
-          disabled={true}
-          placeholder="Translation" />
-      </ContainerContent>
-          </>
-          {isManual && <Button  variant="contained" style={{ maxWidth: '150px', marginBottom: '.5rem'}}>Translate</Button>}
-          <hr style={{width: '100%'}} />
+          <OutputText
+            multiline
+            // rows={12}
+            value={isLoading ? 'Loading...' : currentResult}
+            disabled={true}
+            placeholder="Translation" />
+        </ContainerContent>
+      </>
+      {isManual && <Button onClick={() => translate()} variant="contained" style={{ maxWidth: '150px', marginBottom: '.5rem' }}>Translate</Button>}
+      <hr style={{ width: '100%' }} />
     </Fragment>
   );
 }
