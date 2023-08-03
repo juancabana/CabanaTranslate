@@ -12,10 +12,22 @@ const UpBar = () => {
     const currentFromLanguage = useSelector((store) => store.fromLanguage);
 
     const languages = [
-        { value: 'es', label: 'Español' },
-        { value: 'en', label: 'English' },
-        { value: 'fr', label: 'Frances' },
-    ]
+        { value: 'zh',  label: 'Chinese (中文)' },
+        { value: 'es',  label: 'Spanish (Español)' },
+        { value: 'en',  label: 'English' },
+        { value: 'hi',  label: 'Hindi (हिन्दी)' },
+        { value: 'ar',  label: 'Arabic (لعربية)' },
+        { value: 'bn',  label: 'Bengali (বাংলা)' },
+        { value: 'pt',  label: 'Portuguese' },
+        { value: 'ru',  label: 'Russian (русский)' },
+        { value: 'ja',  label: 'Japanese (日本語)' },
+        { value: 'pa',  label: 'Punjabi (ਪੰਜਾਬੀ)' },
+        { value: 'de',  label: 'German (Deutsch)' },
+        { value: 'jv',  label: 'Javanese' },
+        { value: 'id',  label: 'Indonesian' },
+        { value: 'fr',  label: 'French' },
+        { value: 'vi',  label: 'Vietnamese (Tiếng Việt)' }
+      ];
 
     const BoxLanguage = styled(Box)(() => ({
         width: '100%', height: '100%', display: 'flex', alignItems: 'center'
